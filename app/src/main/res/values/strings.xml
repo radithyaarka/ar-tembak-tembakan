@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BlastWizard</string>
+<!--    <string destination="src/main/assets/wizard" name="TODO"></string>-->
+</resources>
