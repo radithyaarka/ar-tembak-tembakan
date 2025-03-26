@@ -49,3 +49,11 @@ sceneform.asset('sampledata/model/obj',
         'sampledata/model.sfa',
         'src/main/assets/model'
 )
+
+sceneform.asset(
+        'sampledata/Untitled.obj',  // Source OBJ file
+//        'sampledata/Untitled.mtl',
+        'default',  // Corresponding MTL file
+        'sampledata/Untitled.sfa',              // Output SFA file
+        'src/main/assets/Untitled'              // Output directory for SFB
+)
