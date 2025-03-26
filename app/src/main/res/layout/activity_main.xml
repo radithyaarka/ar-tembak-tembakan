@@ -6,59 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- AR Fragment -->
     <fragment
         android:id="@+id/fragment"
         android:name="com.sample.argame.myFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/countfire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Left : 20"
-        android:textSize="20sp" />
+    <!-- Start Screen -->
+    <RelativeLayout
+        android:id="@+id/startScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:gravity="center">
 
-    <ImageView
-        android:id="@+id/exit"
-        android:layout_width="25dp"
-        android:layout_height="35dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="START GAME"
+            android:textSize="24sp"
+            android:padding="20dp"
+            android:background="@drawable/button_background" />
 
-        android:layout_marginRight="11dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/exit"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    </RelativeLayout>
 
-    <View
-        android:layout_width="45dp"
-        android:layout_height="3dp"
-        android:background="#E5273A"
-        android:layout_centerInParent="true"
-        />
+    <!-- Game UI (hidden initially) -->
+    <RelativeLayout
+        android:id="@+id/gameUI"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-    <View
-        android:layout_width="3dp"
-        android:layout_height="45dp"
-        android:layout_centerInParent="true"
-        android:background="#E5273A" />
+        <TextView
+            android:id="@+id/countfire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Left : 20"
+            android:textSize="20sp" />
 
+        <ImageView
+            android:id="@+id/exit"
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/exit"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/fire"
-        android:layout_width="155dp"
-        android:layout_height="76dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:src="@drawable/shooting"
-        android:text="Shoot" />
+        <!-- Crosshair -->
+        <View
+            android:layout_width="45dp"
+            android:layout_height="3dp"
+            android:background="#E5273A"
+            android:layout_centerInParent="true"/>
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:background="#E5273A"/>
+
+        <!-- Fire Button -->
+        <ImageView
+            android:id="@+id/fire"
+            android:layout_width="155dp"
+            android:layout_height="76dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/shooting"
+            android:text="Shoot"/>
+    </RelativeLayout>
 </RelativeLayout>
