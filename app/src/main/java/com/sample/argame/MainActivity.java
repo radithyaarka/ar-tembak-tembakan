@@ -28,6 +28,7 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.rendering.Texture;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private Button startButton;
     private ImageView fireButton;
     private ImageView exitButton;
+    private Button returnToStartButton; // New button for returning to start screen
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -80,10 +82,12 @@ public class MainActivity extends AppCompatActivity {
         fireLeftText = findViewById(R.id.countfire);
         fireButton = findViewById(R.id.fire);
         exitButton = findViewById(R.id.exit);
+        returnToStartButton = findViewById(R.id.returnToStart); // Initialize the new button
 
         // Hide game UI initially
         gameUI.setVisibility(View.GONE);
         startScreen.setVisibility(View.VISIBLE);
+        returnToStartButton.setVisibility(View.GONE); // Hide return button initially
     }
 
     private void setupARScene() {
@@ -109,12 +113,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         exitButton.setOnClickListener(view -> exitGame());
+
+        returnToStartButton.setOnClickListener(view -> returnToStartScreen());
     }
 
     private void startGame() {
         // Hide start screen and show game UI
         startScreen.setVisibility(View.GONE);
         gameUI.setVisibility(View.VISIBLE);
+        returnToStartButton.setVisibility(View.GONE); // Ensure return button is hidden
 
         // Spawn enemies
         setEnemyToTheScene();
@@ -129,6 +136,24 @@ public class MainActivity extends AppCompatActivity {
         moveTaskToBack(true);
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(1);
+    }
+
+    private void returnToStartScreen() {
+        // Clear the scene
+        for (Node child : new ArrayList<>(scene.getChildren())) {
+            if (child.getRenderable() != null) {
+                scene.removeChild(child);
+            }
+        }
+
+        // Show start screen and hide game UI
+        startScreen.setVisibility(View.VISIBLE);
+        gameUI.setVisibility(View.GONE);
+        returnToStartButton.setVisibility(View.GONE);
+
+        // Reset game state
+        fireLeft = 20;
+        timeStart = false;
     }
 
     private void loadSoundPool() {
@@ -164,6 +189,11 @@ public class MainActivity extends AppCompatActivity {
                         scene.removeChild(nodeContact);
                         scene.removeChild(node);
                         soundPool.play(sound, 1, 1, 1, 0, 1);
+
+                        // Check if game is over
+                        if (fireLeft <= 0) {
+                            returnToStartButton.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
                 try {
