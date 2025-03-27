@@ -55,5 +55,5 @@ sceneform.asset(
 //        'sampledata/invader.mtl',
         'default',  // Corresponding MTL file
         'sampledata/invader.sfa',              // Output SFA file
-        'src/main/assets/Invader'              // Output directory for SFB
+        'src/main/assets/invader'              // Output directory for SFB
 )
