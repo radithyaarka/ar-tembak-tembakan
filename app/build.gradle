@@ -51,9 +51,9 @@ sceneform.asset('sampledata/model/obj',
 )
 
 sceneform.asset(
-        'sampledata/Untitled.obj',  // Source OBJ file
-//        'sampledata/Untitled.mtl',
+        'sampledata/invader.obj',  // Source OBJ file
+//        'sampledata/invader.mtl',
         'default',  // Corresponding MTL file
-        'sampledata/Untitled.sfa',              // Output SFA file
-        'src/main/assets/Untitled'              // Output directory for SFB
+        'sampledata/invader.sfa',              // Output SFA file
+        'src/main/assets/Invader'              // Output directory for SFB
 )

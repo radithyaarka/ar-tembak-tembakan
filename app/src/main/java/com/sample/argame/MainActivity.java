@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setEnemyToTheScene() {
         ModelRenderable.builder()
-                .setSource(this, Uri.parse("Untitled.sfb"))
+                .setSource(this, Uri.parse("invader.sfb"))
                 .build()
                 .thenAccept(modelRenderable -> {
                     for (int i = 0; i < 20; i++) {
